@@ -1,3 +1,5 @@
+import 'package:chickenproject/utility/app_constant.dart';
+import 'package:chickenproject/utility/app_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ms_undraw/ms_undraw.dart';
@@ -28,9 +30,18 @@ class _MainHomeState extends State<MainHome> {
     '/broilerGrowth',
   ];
 
+  AppController appController = Get.put(AppController());
+
   @override
   void initState() {
     super.initState();
+
+    if (appController.cpIntakeNews.isEmpty) {
+      for (var i = 0; i < AppConstant.cpIntakeOld.length; i++) {
+        appController.cpIntakeNews.add(0.0);
+        appController.meIntakeNews.add(0.0);
+      }
+    }
   }
 
   @override
@@ -43,17 +54,9 @@ class _MainHomeState extends State<MainHome> {
                   crossAxisCount: 2, mainAxisSpacing: 8, crossAxisSpacing: 8),
               itemCount: titles.length,
               itemBuilder: (context, index) => InkWell(
-
                     onTap: () {
-
                       Get.toNamed(nameRountes[index]);
-
-
-
                     },
-
-
-
                     child: Container(
                       decoration: BoxDecoration(border: Border.all()),
                       child: Column(

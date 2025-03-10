@@ -39,6 +39,14 @@ class _BroilerGrowthState extends State<BroilerGrowth> {
 
                           print('## dataModel ---> ${dataModels.length}');
 
+                          List<DataModel> cpIntakeDataModels = [];
+                          for (var i = 0; i < dataModels.length; i++) {
+                            DataModel dataModel = DataModel(
+                                valueX: dataModels[i].valueX,
+                                valueY: appController.cpIntakeNews[i]);
+                            cpIntakeDataModels.add(dataModel);
+                          }
+
                           if (dataModels.isEmpty) {
                             return SizedBox();
                           } else {
@@ -47,12 +55,21 @@ class _BroilerGrowthState extends State<BroilerGrowth> {
                                 title: ChartTitle(text: 'CP Intake'),
                                 series: [
                                   LineSeries(
+                                    color: Colors.red,
+                                    dataSource: cpIntakeDataModels,
+                                    xValueMapper: (datum, index) =>
+                                        datum.valueX,
+                                    yValueMapper: (datum, index) =>
+                                        datum.valueY,
+                                  ),
+                                  LineSeries(
+                                    color: Colors.blue,
                                     dataSource: dataModels,
                                     xValueMapper: (datum, index) =>
                                         datum.valueX,
                                     yValueMapper: (datum, index) =>
                                         datum.valueY,
-                                  )
+                                  ),
                                 ]);
                           }
                         } else {
@@ -69,13 +86,43 @@ class _BroilerGrowthState extends State<BroilerGrowth> {
                 if (snapshot.hasData) {
                   List<DataModel> dataModels = snapshot.data!;
 
+                  List<DataModel> meDataModels = [];
+
+                  for (var i = 0; i < dataModels.length; i++) {
+                    DataModel dataModel = DataModel(
+                        valueX: dataModels[i].valueX,
+                        valueY: appController.meIntakeNews[i]);
+
+                    meDataModels.add(dataModel);
+                  }
+
                   if (dataModels.isEmpty) {
                     return SizedBox();
                   } else {
                     return SfCartesianChart(
                       primaryXAxis: CategoryAxis(),
-                      series: [ColumnSeries(dataSource: dataModels,
-                        xValueMapper: (datum, index) => datum.valueX, yValueMapper: (datum, index) => datum.valueY,)],
+                      series: [
+
+
+
+                        ColumnSeries(color: Colors.red,
+                          dataSource: meDataModels,
+                          xValueMapper: (datum, index) => datum.valueX,
+                          yValueMapper: (datum, index) => datum.valueY,
+                        ),
+
+                        ColumnSeries(color: Colors.blue,
+                          dataSource: dataModels,
+                          xValueMapper: (datum, index) => datum.valueX,
+                          yValueMapper: (datum, index) => datum.valueY,
+                        ),
+
+
+
+
+
+
+                      ],
                     );
                   }
                 } else {

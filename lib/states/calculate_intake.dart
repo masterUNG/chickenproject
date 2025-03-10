@@ -269,11 +269,19 @@ class _CalculateIntakeState extends State<CalculateIntake> {
 
                           appController.cpConversions.add(cpConvert);
 
+                          appController.cpIntakeNews[appController.chooseIndexs.last!] = cp;
+
+
+
+
+
                           //for ME
                           double me = double.parse(metaController.text) *
                               double.parse(feedController.text) /
                               1000;
                           appController.meIntakes.add(me);
+
+                          appController.meIntakeNews[appController.chooseIndexs.last!] = me;
 
                           Get.back();
                         }

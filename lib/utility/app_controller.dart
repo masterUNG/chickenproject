@@ -15,4 +15,8 @@ class AppController extends GetxController {
   RxList<double> cpConversions = <double>[].obs;
 
   RxList<double> meConversions = <double>[].obs;
+
+
+  RxList<double> cpIntakeNews = <double>[].obs;
+  RxList<double> meIntakeNews = <double>[].obs;
 }
