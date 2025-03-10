@@ -1,0 +1,2 @@
+/Users/chaiwootphrombutr/WorkSpace/FlutterTraining/chickenproject/android/app/.cxx/RelWithDebInfo/2y2m2r2t/x86/CMakeFiles/edit_cache.dir
+/Users/chaiwootphrombutr/WorkSpace/FlutterTraining/chickenproject/android/app/.cxx/RelWithDebInfo/2y2m2r2t/x86/CMakeFiles/rebuild_cache.dir
