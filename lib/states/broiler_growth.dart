@@ -14,6 +14,7 @@ class BroilerGrowth extends StatefulWidget {
 }
 
 class _BroilerGrowthState extends State<BroilerGrowth> {
+  
   AppController appController = Get.put(AppController());
 
   @override
@@ -102,26 +103,18 @@ class _BroilerGrowthState extends State<BroilerGrowth> {
                     return SfCartesianChart(
                       primaryXAxis: CategoryAxis(),
                       series: [
-
-
-
-                        ColumnSeries(color: Colors.red,
+                        ColumnSeries(
+                          color: Colors.red,
                           dataSource: meDataModels,
                           xValueMapper: (datum, index) => datum.valueX,
                           yValueMapper: (datum, index) => datum.valueY,
                         ),
-
-                        ColumnSeries(color: Colors.blue,
+                        ColumnSeries(
+                          color: Colors.blue,
                           dataSource: dataModels,
                           xValueMapper: (datum, index) => datum.valueX,
                           yValueMapper: (datum, index) => datum.valueY,
                         ),
-
-
-
-
-
-
                       ],
                     );
                   }
