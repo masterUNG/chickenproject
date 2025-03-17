@@ -1,4 +1,5 @@
 import 'package:chickenproject/models/data_model.dart';
+import 'package:chickenproject/models/data_table_model.dart';
 import 'package:get/get.dart';
 
 class AppController extends GetxController {
@@ -16,7 +17,8 @@ class AppController extends GetxController {
 
   RxList<double> meConversions = <double>[].obs;
 
-
   RxList<double> cpIntakeNews = <double>[].obs;
   RxList<double> meIntakeNews = <double>[].obs;
+
+  RxList<DataTableModel> dataTableModels = <DataTableModel>[].obs;
 }

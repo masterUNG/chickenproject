@@ -1,7 +1,6 @@
 import 'package:chickenproject/states/broiler_growth.dart';
 import 'package:chickenproject/states/calculate_intake.dart';
 import 'package:chickenproject/states/farm_manage.dart';
-import 'package:chickenproject/states/intro.dart';
 import 'package:chickenproject/states/main_home.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

@@ -1,3 +1,4 @@
+import 'package:chickenproject/models/data_table_model.dart';
 import 'package:chickenproject/utility/app_constant.dart';
 import 'package:chickenproject/utility/app_controller.dart';
 import 'package:chickenproject/utility/app_service.dart';
@@ -52,7 +53,7 @@ class _CalculateIntakeState extends State<CalculateIntake> {
             children: [
               Container(
                   width: Get.width * 0.5 - 12 - 16,
-                  height: Get.width * 0.5 - 12 - 16,
+                  height: Get.width * 0.5 - 12 - 16 + 15,
                   decoration: BoxDecoration(border: Border.all()),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -60,14 +61,15 @@ class _CalculateIntakeState extends State<CalculateIntake> {
                       Obx(() => Text(
                           appController.cpConversions.isEmpty
                               ? '???'
-                              :  AppService().changeNumberToString(number: appController.cpConversions.last),
+                              : AppService().changeNumberToString(
+                                  number: appController.cpConversions.last),
                           style: AppConstant.h1Style())),
                       Text('CP Conversion', style: AppConstant.h3Style()),
                     ],
                   )),
               Container(
                   width: Get.width * 0.5 - 12 - 16,
-                  height: Get.width * 0.5 - 12 - 16,
+                  height: Get.width * 0.5 - 12 - 16 + 15,
                   decoration: BoxDecoration(border: Border.all()),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -265,15 +267,13 @@ class _CalculateIntakeState extends State<CalculateIntake> {
                               100;
                           appController.cpIntakes.add(cp);
 
-                          double cpConvert = cp / double.parse(weightController.text);
+                          double cpConvert =
+                              cp / double.parse(weightController.text);
 
                           appController.cpConversions.add(cpConvert);
 
-                          appController.cpIntakeNews[appController.chooseIndexs.last!] = cp;
-
-
-
-
+                          appController.cpIntakeNews[
+                              appController.chooseIndexs.last!] = cp;
 
                           //for ME
                           double me = double.parse(metaController.text) *
@@ -281,7 +281,16 @@ class _CalculateIntakeState extends State<CalculateIntake> {
                               1000;
                           appController.meIntakes.add(me);
 
-                          appController.meIntakeNews[appController.chooseIndexs.last!] = me;
+                          appController.meIntakeNews[
+                              appController.chooseIndexs.last!] = me;
+
+                          //for DataTableModel
+                          DataTableModel dataTableModel = DataTableModel(
+                              day: appController.chooseIndexs.last!,
+                              cp: cp,
+                              me: me,
+                              weight: weightController.text);
+                          appController.dataTableModels.add(dataTableModel);
 
                           Get.back();
                         }

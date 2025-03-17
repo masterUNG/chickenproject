@@ -51,7 +51,7 @@ class _MainHomeState extends State<MainHome> {
           child: GridView.builder(
               padding: EdgeInsets.all(8),
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2, mainAxisSpacing: 8, crossAxisSpacing: 8),
+                  crossAxisCount: 2, mainAxisSpacing: 8, crossAxisSpacing: 8, childAspectRatio: 1/1.2),
               itemCount: titles.length,
               itemBuilder: (context, index) => InkWell(
                     onTap: () {
